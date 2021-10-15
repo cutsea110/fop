@@ -31,9 +31,9 @@ swp :: Ord a => [a] -> (a, [a])
 swp = swpBy (<)
 
 swpBy :: Ord a => (a -> a -> Bool) -> [a] -> (a, [a])
-swpBy cmp xxs@(x:_) = case break (x `cmp`) xxs of
-  (xs, []) -> (x, tail xs)
-  (xs, ys) -> (z, tail xs++[x]++zs)
+swpBy cmp xxs@(x:_) = case break (x `cmp`) xs of
+  (xs, []) -> (x, xs)
+  (xs, ys) -> (z, xs++[x]++zs)
     where (z, zs) = swpBy cmp ys
 
 sample = [1,3,2,5,4,7,6,0]
