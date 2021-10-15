@@ -31,7 +31,7 @@ swp :: Ord a => [a] -> (a, [a])
 swp = swpBy (<)
 
 swpBy :: Ord a => (a -> a -> Bool) -> [a] -> (a, [a])
-swpBy cmp xxs@(x:_) = case break (x `cmp`) xs of
+swpBy cmp xxs@(x:xs) = case break (x `cmp`) xs of
   (xs, []) -> (x, xs)
   (xs, ys) -> (z, xs++[x]++zs)
     where (z, zs) = swpBy cmp ys
