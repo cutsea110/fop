@@ -18,17 +18,11 @@ sort = sortBy (<)
 sortBy :: (Show a, Ord a) => (a -> a -> Bool) -> [a] -> [a]
 sortBy cmp xs = swapperBy cmp $? ([], xs)
 
-swapper :: (Show a, Ord a) => ([a], [a]) -> [a]
-swapper = swapperBy (<)
-
 swapperBy :: (Show a, Ord a) => (a -> a -> Bool) -> ([a], [a]) -> [a]
 swapperBy cmp (xs,   []) = xs
 swapperBy cmp (xs, y:ys) = swapperBy cmp $? (zs++[w], ws)
   where (z, zs) = swpBy cmp (y:xs)
         (w, ws) = swpBy cmp (z:ys)
-
-swp :: Ord a => [a] -> (a, [a])
-swp = swpBy (<)
 
 swpBy :: Ord a => (a -> a -> Bool) -> [a] -> (a, [a])
 swpBy cmp xxs@(x:xs) = case break (x `cmp`) xs of
