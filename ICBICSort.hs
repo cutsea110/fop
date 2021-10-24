@@ -17,13 +17,13 @@ sort xs = swapper $? ([], xs)
 swapper :: (Show a, Ord a) => ([a], [a]) -> [a]
 swapper (xs,   []) = xs
 swapper (xs, y:ys) = swapper $? (zs++[w], ws)
-  where (z, zs) = swp (y, xs)
-        (w, ws) = swp (z, ys)
+  where (z, zs) = swap (y, xs)
+        (w, ws) = swap (z, ys)
 
-swp :: Ord a => (a, [a]) -> (a, [a])
-swp (x, xs) = case break (x<) xs of
+swap :: Ord a => (a, [a]) -> (a, [a])
+swap (x, xs) = case break (x<) xs of
   (xs', [])   -> (x, xs')
-  (xs', y:ys) -> (z, xs'++[x]++zs)
-    where (z, zs) = swp (y, ys)
+  (xs', y:ys) -> f (x, xs') (swap (y, ys))
+    where f (x, xs) (y, ys) = (y, xs++[x]++ys)
 
 sample = [1,3,2,5,4,7,6,0]
