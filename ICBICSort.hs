@@ -25,7 +25,7 @@ swapperBy cmp (xs, y:ys) = swapperBy cmp $? (zs++[w], ws)
         (w, ws) = swpBy cmp (z:ys)
 
 swpBy :: Ord a => (a -> a -> Bool) -> [a] -> (a, [a])
-swpBy cmp xxs@(x:xs) = case break (x `cmp`) xs of
+swpBy cmp (x:xs) = case break (x `cmp`) xs of
   (xs, []) -> (x, xs)
   (xs, ys) -> (z, xs++[x]++zs)
     where (z, zs) = swpBy cmp ys
