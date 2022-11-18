@@ -18,12 +18,12 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     ICBICSort
+                       Sort
                        DataTypesALaCarte
                        OpenUnion
                        HAlgebraAst
                        HAlgebra
                        Hylo
-                       Sort
   -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.12
@@ -31,5 +31,6 @@ library
                      , containers
                      , extensible
                      , vector
+                     , Cabal
   -- hs-source-dirs:
   default-language:    Haskell2010
