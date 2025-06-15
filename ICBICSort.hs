@@ -31,5 +31,5 @@ swapper (xs, y:ys) = swapper $? (zs++[w], ws)
 swap :: Ord a => (a, [a]) -> (a, [a])
 swap (x, xs) = case break (x<) xs of
   (xs',   []) -> (x, xs')
-  (xs', y:ys) -> f (x, xs') $ swap (y, ys)
-    where f (x, xs) (y, ys) = (y, xs++[x]++ys)
+  (xs', y:ys) -> (z, xs'++[x]++zs)
+    where (z, zs) = swap (y, ys)
